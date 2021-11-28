@@ -31,19 +31,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.get('/success', checkCookie, (req, res) => {
-    res.sendFile(__dirname + '/success.html');
-    console.log("UID of Signed in User is: " + req.decodedClaims.uid);
-    //You will reach here only if session is working Fine
-});
-
-app.get('/spare_parts', checkCookie, (req, res) => {
     res.sendFile(__dirname + '/spare_parts.html');
-    console.log("UID of Signed in User is: " + req.decodedClaims.uid);
-    //You will reach here only if session is working Fine
-});
-
-app.get('/create_cone', checkCookie, (req, res) => {
-    res.sendFile(__dirname + '/create_cone.html');
     console.log("UID of Signed in User is: " + req.decodedClaims.uid);
     //You will reach here only if session is working Fine
 });
@@ -84,7 +72,6 @@ function savecookie(idtoken, res) {
 
 
 function checkCookie(req, res, next) {
-
 
     const sessionCookie = req.cookies.__session || '';
     admin.auth().verifySessionCookie(
